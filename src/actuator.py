@@ -4,6 +4,7 @@ Coolingfan
 Heatpad
 """
 from constants import *
+import math
 
 class Actuator():
     def __init__(self):  #add class argument
@@ -13,7 +14,7 @@ class Actuator():
     def get_power(self):
         return self._power
 
-    def update(self) -> None:
+    def update(self, power) -> None:
         pass
 
 """
@@ -27,8 +28,13 @@ class Coolingfan(Actuator):
     def get_power(self):
         return self._power
 
-    def update(self) -> None:
-        self._power += 888
+    def update(self, temperature, heat_power) -> None:
+        power = abs(math.log(temperature/heat_power)/ math.log(fan_factor)) 
+        self._power = power
+    
+    def __repr__(self):
+        rep = "Fan Power: " + str(self.get_power())
+        return rep
 
 
 """
@@ -42,14 +48,12 @@ class Heatpad(Actuator):
     def get_power(self):
         return self._power
 
-    def simulate(temp):
-        def update(self):
-            if(self._power < 100):
-                self._power += 1
-        return update
-    
-    @simulate
-    def update(self) -> None:
-        self._power += 1
+    def update(self, temperature) -> None:    
+        power = math.log(temperature/temp_min) / math.log(heat_factor)
+        self._power = power
+
+    def __repr__(self):
+        rep = "Heatpad Power: " + str(self.get_power())
+        return rep
 
 

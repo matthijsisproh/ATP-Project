@@ -2,7 +2,10 @@ from entities import Entity, Temperature, Humidity, Soundvalue
 from sensor import Sensor, DHT11, DFR0300
 from actuator import Actuator, Coolingfan, Heatpad
 from object_control import ObjectControl
+from constants import *
+from effector import Effector
 
+import time
 from typing import Dict
 
 class Simulator:
@@ -20,11 +23,34 @@ class Simulator:
             'humidity': Humidity(self._sensors['DHT11']),
             'soundvalue': Soundvalue(self._sensors['DFR0300'])
             }
-        
 
+        self._heatpower = 0
+        self._fanpower = 0
+
+    def print_state(self) -> None:
+        for entity in self._entities.values():
+            print(repr(entity))
+
+        for actuator in self._actuators.values():
+            print(repr(actuator))
+
+    
     def run(self):
+        timestamp = 0
         object_control = ObjectControl(self._sensors, self._actuators, self._entities, is_simulation=True)
-        object_control.update()
+        while(timestamp < 100):
+            timestamp += 1
+            self._heatpower += 1
+            self._fanpower += 1
+            time.sleep(1)
+            print(timestamp, '----------------------------------------')
+            object_control.simulate(self._heatpower, self._fanpower)
+            object_control.update()
+            
+            self.print_state()
+
+    
+
 
 
 

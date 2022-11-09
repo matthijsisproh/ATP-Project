@@ -76,3 +76,4 @@ class Soundvalue(Entity):
     def __repr__(self):
         rep = "Soundlevel: " + str(self.get_value())
         return rep
+

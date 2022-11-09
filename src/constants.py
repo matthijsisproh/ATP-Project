@@ -23,16 +23,10 @@ temp_min = 15           # Minimum desired temperature degree celsius
 
 
 """Formula example"""
-fan_power = 0
-heat_power = 0
-
 heat_factor = 1.0175
 sound_factor = 1.015
-# fan = 0.9931
 fan_factor = 0.98964
-tmp = 0
 
-temp_setpoint1 = 45
 
 # for p in range(0, 100):
 #     tempH = heat ** p * 15
