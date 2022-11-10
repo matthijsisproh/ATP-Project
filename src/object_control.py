@@ -21,14 +21,14 @@ class ObjectControl:
 
     def update_sensor(self) -> None:
         self._control_sensors['DHT11'].update(self._heatpower)
+        self._fanpower = self._control_actuators['cooling'].get_power()
         self._control_sensors['DFR0300'].update(self._fanpower)
 
     def update_actuators(self) -> None:
         self._control_actuators['heating'].update(self._temperature)
         self._heatpower = self._control_actuators['heating'].get_power()
-
         self._control_actuators['cooling'].update(self._temperature, self._heatpower)
-        self._fanpower = self._control_actuators['cooling'].get_power()
+        
 
     def update_entities(self) -> None: 
         for entity in self._control_entities.values():

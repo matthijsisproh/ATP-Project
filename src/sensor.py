@@ -67,6 +67,9 @@ class DFR0300(Sensor):
 
     def update(self, fan_power) -> None:
         soundlevel = sound_factor ** fan_power * 20
+        print(soundlevel)
+        print(sound_factor)
+        print(fan_power)
         self._value = soundlevel
 
     def _convertToValue(self) -> float:

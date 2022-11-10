@@ -11,9 +11,9 @@ from typing import Dict
 
 class Simulator:
     def __init__(self):
-        self.c_dht11 = c_DHT11()
+        # self.c_dht11 = c_DHT11()
         self._sensors = {
-            'DHT11':DHT11(self.c_dht11), 
+            'DHT11':DHT11(), #self.c_dht11
             'DFR0300':DFR0300()
             }
         self._actuators = {

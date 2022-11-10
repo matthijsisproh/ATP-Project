@@ -22,15 +22,10 @@ temp_max = 30           # Maximum desired temperature degree celsius
 temp_min = 15           # Minimum desired temperature degree celsius
 
 
-"""Formula example"""
+"""Formula factors"""
 heat_factor = 1.0175
 sound_factor = 1.015
 fan_factor = 0.98964
 
-
-# for p in range(0, 100):
-#     tempH = heat ** p * 15
-#     tempF = fan ** p * temp_setpoint1
-#     print(tempF)
 
 
