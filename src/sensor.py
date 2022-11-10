@@ -7,6 +7,7 @@ import random
 import unittest
 from constants import *
 import math
+from binding import c_DHT11
 
 class Sensor:
     def __init__(self):  #add class argument
@@ -33,12 +34,19 @@ class Sensor:
 DHT11
 """
 class DHT11(Sensor):
-    def __init__(self):
+    def __init__(self, c_dht11: c_DHT11 = None):
         Sensor.__init__(self)
+        self._c_dht11 = c_dht11
 
     def update(self, heat_power) -> None:
         # temperature = heat_factor ** heat_power * 15
-        temperature = 30
+        if(self._c_dht11 == None):
+            temperature = 28
+
+        else:
+            self._c_dht11.update()
+            temperature = self._c_dht11.get_value()
+
         self._value = temperature
 
     def _convertToValue(self) -> float:
@@ -46,6 +54,9 @@ class DHT11(Sensor):
 
     def return_value(self) -> float:
         return round(self._value, 2)
+
+
+
 
 """
 DFR0300

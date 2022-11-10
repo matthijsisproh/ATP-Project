@@ -1,5 +1,8 @@
 #include <stdio.h>
 
-void display(){
-    printf("Hello World");
+int update(){
+    int temperature = 30;
+    return temperature;
+
 }
+

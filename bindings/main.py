@@ -1,3 +1,4 @@
 import ctypes
 
-clibrary = ctypes.CDLL("C:/Users/MatthijsKoelewijnDen/Documents/Github/ATP-Project/bindings/clibrary.so")
+clibrary = ctypes.CDLL("/home/matthijsisproh/ATP-Project/bindings/clibrary.so")
+clibrary.display()
