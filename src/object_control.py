@@ -1,7 +1,7 @@
 from entities import Entity
 from sensor import Sensor
 from actuator import Actuator
-
+from decorators import cache
 from typing import Dict
 
 """
@@ -14,13 +14,16 @@ class ObjectControl:
         self._control_entities = entities
         self._is_simulation = is_simulation
         self._temperature = 19
+        self._cache = Dict
 
     def simulate(self, heatpower, fanpower):
         self._heatpower = heatpower
         self._fanpower = fanpower
+        
 
     def update_sensor(self) -> None:
         self._control_sensors['DHT11'].update(self._heatpower)
+        # self._cache = self._control_sensors['DHT11'].return_value.cache.values()
         self._fanpower = self._control_actuators['cooling'].get_power()
         self._control_sensors['DFR0300'].update(self._fanpower)
 
@@ -42,7 +45,9 @@ class ObjectControl:
         self.update_entities()
         self.update_actuators()
 
-
+    # def print_cache(self):
+    #     for i in self._cache:
+    #         print(i)
 
 
 

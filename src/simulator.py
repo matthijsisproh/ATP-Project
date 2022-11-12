@@ -40,16 +40,17 @@ class Simulator:
     def run(self):
         timestamp = 0
         object_control = ObjectControl(self._sensors, self._actuators, self._entities, is_simulation=True)
-        while(timestamp < 100):
+        while(timestamp < 10):
             timestamp += 1
             self._heatpower += 1
             self._fanpower += 1
-            time.sleep(1)
+            # time.sleep(1)
             print(timestamp, '----------------------------------------')
             object_control.simulate(self._heatpower, self._fanpower)
             object_control.update()
             
             self.print_state()
+        # object_control.print_cache()
 
     
 

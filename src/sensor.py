@@ -3,11 +3,13 @@ Sensor objects:
 DHT11
 DFR0300
 """
-import random
 import unittest
 from constants import *
-import math
 from binding import c_DHT11
+from typing import Generator, Union
+import itertools
+from statistics import mean
+from decorators import logger, timer, cache
 
 class Sensor:
     def __init__(self):  #add class argument
@@ -17,15 +19,6 @@ class Sensor:
     def update(self) -> None:
         pass
 
-    def read_value(self) -> float:
-        return round(self._value, 2)
-
-    def measure(self) -> str:
-        return str(self._convert_to_value()) + self._unit_of_measure
-
-    def _convert_to_value(self) -> float:
-        return round(self._value, 2)
-
     def return_value(self) -> float:
         return round(self._value, 2)
 
@@ -33,28 +26,41 @@ class Sensor:
 """
 DHT11
 """
+
 class DHT11(Sensor):
     def __init__(self, c_dht11: c_DHT11 = None):
         Sensor.__init__(self)
         self._c_dht11 = c_dht11
 
+    def safe_mean(self, xs: Generator[float, None, None]) -> Union[None, float]:
+        """mean(xs) is geen totale functie en kan errors geven. Beter checken we de lengte van de invoer, maar helaas heeft een
+        generator geen lengte."""
+        try:
+            return mean(xs)
+        except StatisticsError:
+            return None
+    
+    @timer
+    @logger
+    def measure_temperature(self, heat_power : int) -> Generator[int, None, None]:
+        temperature = 20
+        alive = True
+        
+        while(alive):
+            temperature = 1.0175 ** heat_power * 18
+            yield temperature
+
+    
     def update(self, heat_power) -> None:
-        # temperature = heat_factor ** heat_power * 15
         if(self._c_dht11 == None):
-            temperature = 28
+            temps_below = self.measure_temperature(heat_power)
+            temperature = self.safe_mean(itertools.islice(temps_below, 100))
 
         else:
             self._c_dht11.update()
             temperature = self._c_dht11.get_value()
 
         self._value = temperature
-
-    def _convertToValue(self) -> float:
-        return round(self._value, 2)
-
-    def return_value(self) -> float:
-        return round(self._value, 2)
-
 
 
 
@@ -65,17 +71,8 @@ class DFR0300(Sensor):
     def __init__(self):
         Sensor.__init__(self)
 
+    @logger
     def update(self, fan_power) -> None:
         soundlevel = sound_factor ** fan_power * 20
-        print(soundlevel)
-        print(sound_factor)
-        print(fan_power)
         self._value = soundlevel
 
-    def _convertToValue(self) -> float:
-        return round(self._value, 2)
-
-    def return_value(self) -> float:
-        return self._value
-
-    
