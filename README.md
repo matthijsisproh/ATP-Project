@@ -35,9 +35,15 @@ DHT11 module all functions tested passed.
 
 
 
-### Coverage Report
-![Coverage Report](\img\coverage report 2.png "")
-![Alt text](C:\Users\MatthijsKoelewijnDen\Documents\Github\ATP-Project\img\coverage report 2.png?raw=true "Optional Title")
+### Coverage
+The results of code coverage allow us to measure how much of the code is actually used.
+
+#### Coverage & Branch Coverage Report
+![Coverage Report](https://imgur.com/uRU4ZsW.png "")
+![Branch Report](https://i.imgur.com/lZISxiI.png "")
+
+In the coverage and branch coverage report we can find out what code is covered and what not. The reason why actuator.py, entities.py and sensor.py are not fully covered is because those files exists out of superclass Actuator, Entity and Sensor. Those superclasses is not often used because you don't need to call these classes external. The next thing is why binding.py has a coverage of 50% is because it is not used when simulation is on.
+
 
 ### Reflection
 
