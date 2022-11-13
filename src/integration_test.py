@@ -1,29 +1,26 @@
-from unit_test import DHT11
+from sensor import DHT11
+import itertools
+import unittest
 
-
-class MySystem:
+class Integration_test:
     def __init__(self):
-        self._external_system = DHT11()
+        self._external_module = DHT11()
 
-    def test_DHT11(self):
+    def test_DHT11(self) -> bool:
         try:
-            for heat_power in range(0, 100):
-                temperature_int = self._external_system.measure_temperature(heat_power)
-                temperature_float = self._external_system.safe_mean(temperature_int)
-                self._external_system.update()
-                result = self._external_system.return_value()
-            print(temperature_int)
-            print(temperature_float)
-            print(result)
+            temperature_generator = self._external_module.measure_temperature(1)
+            temperature_float = self._external_module.safe_mean(itertools.islice(temperature_generator, 1))
+            self._external_module.update(1)
+            result = self._external_module.return_value()
             return True
-
+        
         except Exception:
             return False
 
             
-def test_MySystem():
-    system = MySystem()
+def test_integration():
+    integration = Integration_test()
+    unittest.TestCase.assertTrue(integration.test_DHT11(), "Integration failed")
 
-    assert system.test_DHT11()
-    assert not system.test_DHT11()
 
+test_integration()
