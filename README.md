@@ -36,7 +36,7 @@ DHT11 module all functions tested passed.
 
 
 ### Coverage Report
-![Coverage Report](https://imgur.com/a/PiskRca "")
+![Coverage Report]([https://imgur.com/a/PiskRca](https://imgur.com/uRU4ZsW) "")
 
 
 ### Reflection
