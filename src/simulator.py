@@ -1,9 +1,8 @@
-from entities import Entity, Temperature, Humidity, Soundvalue
-from sensor import Sensor, DHT11, DFR0300
-from actuator import Actuator, Coolingfan, Heatpad
+from entities import Temperature, Humidity, Soundvalue
+from sensor import DHT11, DFR0300
+from actuator import Coolingfan, Heatpad
 from object_control import ObjectControl
 from constants import *
-from effector import Effector
 from binding import c_DHT11
 
 import time
@@ -50,8 +49,6 @@ class Simulator:
             object_control.update()
             
             self.print_state()
-        # object_control.print_cache()
-
     
 
 

@@ -3,18 +3,17 @@ Sensor objects:
 DHT11
 DFR0300
 """
-import unittest
+
 from constants import *
 from binding import c_DHT11
 from typing import Generator, Union
 import itertools
 from statistics import mean
-from decorators import logger, timer, cache
+from decorators import logger, timer
 
 class Sensor:
-    def __init__(self):  #add class argument
+    def __init__(self): 
         self._value = 1
-        
 
     def update(self) -> None:
         pass
@@ -33,8 +32,6 @@ class DHT11(Sensor):
         self._c_dht11 = c_dht11
 
     def safe_mean(self, xs: Generator[float, None, None]) -> Union[None, float]:
-        """mean(xs) is geen totale functie en kan errors geven. Beter checken we de lengte van de invoer, maar helaas heeft een
-        generator geen lengte."""
         try:
             return mean(xs)
         except StatisticsError:

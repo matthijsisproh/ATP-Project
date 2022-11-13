@@ -1,7 +1,7 @@
 from entities import Entity
 from sensor import Sensor
 from actuator import Actuator
-from decorators import cache
+# from decorators import cache
 from typing import Dict
 
 """
