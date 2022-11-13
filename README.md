@@ -13,13 +13,22 @@ This project also includes a binding between C++ and Python to control the DHT11
 Although the project created has been tested by Unittests(Only DHT11 module), Integration tests and a system test.
 
 ## Usage
-To run the simulation type in terminal "python3 src/main.py"
+To run the simulation type in terminal:
+```
+python3 src/main.py
+```
 
 ## Test report
 To run test ...
 
 ### Unit Test
-DHT11 module all functions tested passed.
+The unit_test.py file provides individual tests of the DHT11 module functions.
+All functions tested passed.
+
+To run the integration test in terminal:
+```
+python3 unit_test.py -v
+```
 
 #### Functions:
 - safe_mean : This function returns an Union[None, float] type, this function returns a mean value of measure_temperature
@@ -27,8 +36,15 @@ DHT11 module all functions tested passed.
 - update : This function returns a None type, this function updates the temperature by calling measure_temperature
 - return_value : This function returns a float, this function is a get function of DHT11 Module.
 
+
 ### Integration Test
-- 
+For the integration test we used the so called "Big Bang Test" method. In big bang integration testing, all the different modules are integrated simultaneously.
+All modules of DHT11 are integrated simultaneously to test the system as a whole. The modules are not tested individually. Instead, they are tested together once the entire system is complete.
+
+To run the integration test in terminal:
+```
+python3 integration_test.py -v
+```
 
 
 ### System Test
