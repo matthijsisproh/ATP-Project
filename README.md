@@ -48,6 +48,18 @@ python3 integration_test.py -v
 
 
 ### System Test
+For the system test we want the system to return a measured temperature between 18 and 32 degrees celsius. For this we run heatpad and coolingfan.
+After all this finished we want to see what is the measured temperature based on heatpad power and coolingfan power.
+
+To run the system test in terminal:
+```
+python3 system_test.py -v
+```
+
+Output:
+The system works.
+
+The measured temperature based on heatpad and coolingfan power is between the quality criteria of 18 and 32 degrees celsius.
 
 
 
@@ -62,4 +74,7 @@ In the coverage and branch coverage report we can find out what code is covered 
 
 
 ### Reflection
+For this project I am pity to say that it failed to connect the DHT11 module sensor to the arduino UNO and run it simultanously on the simulation. I am glad to say that the simulation works and all tests passed. I hope to finish this project with my new knowledge of functional reactive programming and aspect oriented programming. The binding of C++ and Python only works on my Linux VM, because I got many errors of saying that it is not a Win32 application.
+
+I hope you enjoyed my project and feel free to give feedback.
 
