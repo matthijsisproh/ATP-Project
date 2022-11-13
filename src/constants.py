@@ -19,7 +19,7 @@ heatpad_max = 85        # Maximum heat of heatpad degree celsius
 
 """Desired temperatures degree celsius"""
 temp_max = 30           # Maximum desired temperature degree celsius    
-temp_min = 15           # Minimum desired temperature degree celsius
+temp_min = 18           # Minimum desired temperature degree celsius
 
 
 """Formula factors"""
