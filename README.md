@@ -37,7 +37,7 @@ DHT11 module all functions tested passed.
 
 ### Coverage Report
 ![Coverage Report](\img\coverage report 2.png "")
-![Alt text](/img/coverage report 2.png "Optional Title")
+![Alt text](Documents/Github/ATP-report/img/coverage report 2.png "Optional Title")
 
 ### Reflection
 
