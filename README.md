@@ -13,7 +13,10 @@ This project also includes a binding between C++ and Python to control the DHT11
 Although the project created has been tested by Unittests(Only DHT11 module), Integration tests and a system test.
 
 ## Usage
-To run the simulation type in terminal "python3 src/main.py"
+To run the simulation type in terminal:
+```
+python3 src/main.py
+```
 
 ## Test report
 To run test ...
